@@ -1,3 +1,7 @@
+#apt install git
+#apt install gcc
+
+
 #steps to install and run mysql 
 
 sudo apt-get remove --purge mysql* -y
@@ -35,7 +39,6 @@ gcc grantuser.c -o grantuser -I/usr/include/mysql -L/usr/lib/x86_64-linux-gnu -l
 gcc nominate.c  -o nominate  -I/usr/include/mysql  -L/usr/lib/x86_64-linux-gnu -lmysqlclient
 gcc manifesto.c  -o manifesto -I/usr/include/mysql  -L/usr/lib/x86_64-linux-gnu -lmysqlclient
 gcc listmanifesto.c  -o listmanifesto -I/usr/include/mysql  -L/usr/lib/x86_64-linux-gnu -lmysqlclient
-
 #contenders.c
 gcc contenders.c -o contenders -I/usr/include/mysql  -L/usr/lib/x86_64-linux-gnu -lmysqlclient
 gcc rate.c -o rate -I/usr/include/mysql  -L/usr/lib/x86_64-linux-gnu -lmysqlclient
@@ -46,6 +49,7 @@ gcc deleterate.c -o deleterate -I/usr/include/mysql  -L/usr/lib/x86_64-linux-gnu
 #testing 
 ./createdb
 ./createuser
+./grantuser
 ./contenders
 ./nominate abhishek
 ./manifesto  abhishek MANIFESTO IDEA1 IDEA2 IDEA3
