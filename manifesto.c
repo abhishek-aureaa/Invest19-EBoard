@@ -32,48 +32,48 @@ int main(int argc, char **argv)
   }    
   
    char requete[500];
-   memset(requete,'\0',500);
+   //memset(requete,'\0',500);
 
    strcpy(requete, "INSERT INTO manifesto VALUES ('");
    strcat(requete, argv[1]);
   
-   printf("111\n");
 
+   strcat(requete, "','");
    if(argv[2] != NULL)
    {
-      strcat(requete, "','");
       strcat(requete, argv[2]);
    }
 
-   printf("222\n");
+   strcat(requete, "','");
    if(argv[3] != NULL)
    {
-      strcat(requete, "','");
       strcat(requete, argv[3]);
    }
 
-   printf("333\n");
+   strcat(requete, "','");
    if(argv[4] != NULL)
-   //if(argv[4] == "")
    {
-      strcat(requete, "','");
       strcat(requete, argv[4]);
    }
 
-   printf("444\n");
+   strcat(requete, "','");
    if(argv[5] != NULL)
-   //if(argv[5] == NULL)
+   //if(argv[5] == "")
    {
-      strcat(requete, "','");
+      printf("1111\n");
+      printf(argv[5]);
+      printf("\n");
       strcat(requete, argv[5]);
    }
-   strcat(requete, "')");
-   printf("5555\n");
+   //printf("1111\n");
+   strcat(requete, "'");
+   strcat(requete, ")");
+   //printf(requete);
+   //printf("\n");
 
    if (mysql_query(con,requete)) {
       finish_with_error(con);
   }
-   printf("666\n");
 
   
   mysql_close(con);
