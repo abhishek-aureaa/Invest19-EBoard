@@ -13,12 +13,17 @@ sudo apt-get install libmysqlclient-dev -y
 #install build-essentials
 
 gcc version.c  -I/usr/include/mysql -L/usr/lib/x86_64-linux-gnu -lmysqlclient
-gcc createdb.c   -I/usr/include/mysql -L/usr/lib/x86_64-linux-gnu -lmysqlclient
-gcc grantuser.c   -I/usr/include/mysql -L/usr/lib/x86_64-linux-gnu -lmysqlclient
-gcc createtableinsert.c    -I/usr/include/mysql -L/usr/lib/x86_64-linux-gnu -lmysqlclient
-gcc nominate.c   -I/usr/include/mysql  -L/usr/lib/x86_64-linux-gnu -lmysqlclient
-gcc manifesto.c   -I/usr/include/mysql  -L/usr/lib/x86_64-linux-gnu -lmysqlclient
-
+gcc createdb.c -o createdb  -I/usr/include/mysql -L/usr/lib/x86_64-linux-gnu -lmysqlclient
+gcc createuser.c -o createuser -I/usr/include/mysql -L/usr/lib/x86_64-linux-gnu -lmysqlclient
+gcc grantuser.c -o grantuser -I/usr/include/mysql -L/usr/lib/x86_64-linux-gnu -lmysqlclient
+#gcc createtableinsert.c -o createtableinsert -I/usr/include/mysql -L/usr/lib/x86_64-linux-gnu -lmysqlclient
+gcc nominate.c  -o nominate  -I/usr/include/mysql  -L/usr/lib/x86_64-linux-gnu -lmysqlclient
+gcc manifesto.c  -o manifesto -I/usr/include/mysql  -L/usr/lib/x86_64-linux-gnu -lmysqlclient
+#contenders.c
+gcc contenders.c -o contenders -I/usr/include/mysql  -L/usr/lib/x86_64-linux-gnu -lmysqlclient
+gcc rate.c -o rate -I/usr/include/mysql  -L/usr/lib/x86_64-linux-gnu -lmysqlclient
+#deleterate.c
+gcc deleterate.c -o deleterate -I/usr/include/mysql  -L/usr/lib/x86_64-linux-gnu -lmysqlclient
 
 #sql command : use testdb;
 #select user  from mysql.user;

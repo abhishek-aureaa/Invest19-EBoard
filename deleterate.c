@@ -11,14 +11,12 @@ void finish_with_error(MYSQL *con)
 
 int main(int argc, char **argv)
 {
-  printf("99999999");
-  if(argv[1] == NULL)
+  if(argv[1] == "")
   {
 	printf("please provide name in the command line\n"); 
         return 0;
   }
 
-  printf("99999999");
   MYSQL *con = mysql_init(NULL);
   
   if (con == NULL) 
@@ -33,41 +31,16 @@ int main(int argc, char **argv)
       finish_with_error(con);
   }    
   
-   printf("99999999");
    char requete[500];
-
-   strcpy(requete, "INSERT INTO manifesto VALUES ('");
+   memset(requete,'\0',500);
+   strcpy(requete, "DELETE FROM IDEA WHERE contender = '");
    strcat(requete, argv[1]);
-  
-
-   strcat(requete, "','");
-   if(argv[2] != NULL)
-   {
-      strcat(requete, argv[2]);
-   }
-
-   strcat(requete, "','");
-   if(argv[3] != NULL)
-   {
-      strcat(requete, argv[3]);
-   }
-
-   strcat(requete, "','");
-   if(argv[4] != NULL)
-   {
-      strcat(requete, argv[4]);
-   }
-
-   printf("99999999");
-   strcat(requete, "','");
-   if(argv[5] != NULL)
-   {
-      strcat(requete, argv[5]);
-   }
-   printf("00000000000");
+   strcat(requete, "' AND idea = '");
+   strcat(requete, argv[2]);
    strcat(requete, "'");
-   strcat(requete, ")");
 
+   printf(requete);
+   printf("\n");
    if (mysql_query(con,requete)) {
       finish_with_error(con);
   }

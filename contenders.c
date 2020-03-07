@@ -44,7 +44,7 @@ int main(int argc, char **argv)
       finish_with_error(con);
   }
   
-  if (mysql_query(con, "CREATE TABLE IDEA(idea TEXT, user TEXT, rating INT)")) {      
+  if (mysql_query(con, "CREATE TABLE IDEA(idea TEXT, contender TEXT, citizen TEXT, rating INT)")) {      
       finish_with_error(con);
   }
   
