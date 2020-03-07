@@ -28,11 +28,23 @@ int main(int argc, char **argv)
       finish_with_error(con);
   }
   
+  if (mysql_query(con, "DROP TABLE IF EXISTS manifesto")) {
+      finish_with_error(con);
+  }
+  
+  if (mysql_query(con, "DROP TABLE IF EXISTS IDEA")) {
+      finish_with_error(con);
+  }
+  
   if (mysql_query(con, "CREATE TABLE contenders(Name TEXT)")) {      
       finish_with_error(con);
   }
   
   if (mysql_query(con, "CREATE TABLE manifesto(contender TEXT, manifesto TEXT, idea1 TEXT , idea2 TEXT , idea3 TEXT)")) {      
+      finish_with_error(con);
+  }
+  
+  if (mysql_query(con, "CREATE TABLE IDEA(idea TEXT, user TEXT, rating INT)")) {      
       finish_with_error(con);
   }
   
