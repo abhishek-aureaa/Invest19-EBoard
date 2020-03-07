@@ -21,7 +21,9 @@ int main(int argc, char **argv)
 
 /*CREATE USER user12@localhost IDENTIFIED BY '34klq*';
   if (mysql_query(con, "CREATE DATABASE testdb")) */
-  if (mysql_query(con, "CREATE USER user12@localhost IDENTIFIED BY '34klq*'")) 
+  //IF NOT EXISTS
+  //if (mysql_query(con, "CREATE USER user12@localhost IDENTIFIED BY '34klq*'")) 
+  if (mysql_query(con, "CREATE USER IF NOT EXISTS user12@localhost IDENTIFIED BY '34klq*'")) 
   {
       fprintf(stderr, "%s\n", mysql_error(con));
       mysql_close(con);

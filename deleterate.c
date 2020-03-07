@@ -33,14 +33,12 @@ int main(int argc, char **argv)
   
    char requete[500];
    memset(requete,'\0',500);
-   strcpy(requete, "DELETE FROM IDEA WHERE contender = '");
+   strcpy(requete, "DELETE FROM IDEA WHERE idea = '");
    strcat(requete, argv[1]);
-   strcat(requete, "' AND idea = '");
+   strcat(requete, "' AND contender = '");
    strcat(requete, argv[2]);
    strcat(requete, "'");
 
-   printf(requete);
-   printf("\n");
    if (mysql_query(con,requete)) {
       finish_with_error(con);
   }

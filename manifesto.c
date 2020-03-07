@@ -11,14 +11,12 @@ void finish_with_error(MYSQL *con)
 
 int main(int argc, char **argv)
 {
-  printf("99999999");
   if(argv[1] == NULL)
   {
 	printf("please provide name in the command line\n"); 
         return 0;
   }
 
-  printf("99999999");
   MYSQL *con = mysql_init(NULL);
   
   if (con == NULL) 
@@ -33,7 +31,6 @@ int main(int argc, char **argv)
       finish_with_error(con);
   }    
   
-   printf("99999999");
    char requete[500];
 
    strcpy(requete, "INSERT INTO manifesto VALUES ('");
@@ -58,13 +55,11 @@ int main(int argc, char **argv)
       strcat(requete, argv[4]);
    }
 
-   printf("99999999");
    strcat(requete, "','");
    if(argv[5] != NULL)
    {
       strcat(requete, argv[5]);
    }
-   printf("00000000000");
    strcat(requete, "'");
    strcat(requete, ")");
 
