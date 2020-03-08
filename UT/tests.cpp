@@ -3,6 +3,11 @@
 #include <gtest/gtest.h>
  
 TEST(Election, ElectonOne) { 
+
+
+    printf("*********************************************************\n");
+    printf("************************UNIT TESTING - START*********************\n");
+    printf("*********************************************************\n");
     contenders c;
 
     ASSERT_EQ(0, c.listcontenders());
@@ -41,6 +46,10 @@ TEST(Election, ElectonOne) {
     ASSERT_EQ(1, c.listRatings());
     ASSERT_EQ(1, c.deleteRating((char*)"idea1", (char*)"Abhishek", (char*)"Aditya"));
     ASSERT_EQ(0, c.listRatings());
+
+    printf("*********************************************************\n");
+    printf("************************UNIT TESTING - ENDS *********************\n");
+    printf("*********************************************************\n");
 
 
 }
