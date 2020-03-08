@@ -24,11 +24,18 @@ struct idea {
 	int rating;
 };
 
+struct follower {
+	struct follower* next;
+	char* contender;
+	char* follower;
+};
+
 class contenders {
 
 	struct Node* head;
 	struct manifesto* headManifesto;
 	struct idea* headIdea;
+	struct follower* headContender;
 
 public:
 	contenders()
@@ -36,6 +43,7 @@ public:
 		head = NULL;
 		headManifesto = NULL;
 		headIdea = NULL;
+		headContender = NULL;
 	}
         int nominate(const char* value)
         {
@@ -138,6 +146,63 @@ public:
 				temp = temp->next;
 		}
               	return 0;
+	}
+
+        int addFollower(const char* contender, const char* follower)
+        {
+                struct follower* temp = (struct follower*) malloc(sizeof(struct follower));
+                temp->contender = (char*)contender;
+                temp->follower = (char*)follower;
+
+                if (headContender == NULL)
+                {
+                        headContender = temp;
+                        headContender->next = NULL;
+                        return 1;
+                }
+                else
+                {
+                        temp->next = headContender;
+                        headContender = temp;
+                        return 1;
+                }
+                return 0;
+        }
+
+	int listFollowersForContender(char* contender)
+	{
+		int num_follower = 0;
+		if (headContender == NULL)
+		{
+			printf("No follower for contender\n");
+			return 0;
+		}
+		struct follower* temp = headContender;
+		printf("****************************************************\n");
+		printf("Follower for Contender '%s' , are : \n", contender);
+		printf("****************************************************\n");
+		while (temp->next != NULL)
+		{
+			if(!strcmp(temp->contender, contender))
+			{
+				printf(temp->follower);
+				printf("\n");
+				num_follower++;
+			}	
+			if (temp->next != NULL)
+				temp = temp->next;
+		}
+		if(!strcmp(temp->contender, contender))
+		{
+			printf(temp->follower);
+			printf("\n");
+			num_follower++;
+		}	
+
+		if(num_follower == 0)
+			return 0;
+		
+		return 1;
 	}
 
 	int listRatings()
