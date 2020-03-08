@@ -15,11 +15,10 @@ sudo make
 # copy or symlink libgtest.a and libgtest_main.a to your /usr/lib folder
 sudo cp *.a /usr/lib
 cd -
-cd ..
 
 
 #Compile and run Code :
-gcc program.cpp -o election -lstdc++ -I./
+gcc program.cpp -o Election -lstdc++ -I./
 ./Election
 
 #Compile and run the unit tests:
