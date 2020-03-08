@@ -23,12 +23,6 @@ sudo make
 sudo cp *.a /usr/lib
 
 
-#Compile and run the tests:
-cmake CMakeLists.txt
-make
-./runTests
-
-
 #install build-essentials
 
 #gcc version.c  -I/usr/include/mysql -L/usr/lib/x86_64-linux-gnu -lmysqlclient
@@ -67,3 +61,29 @@ gcc deleterate.c -o deleterate -I/usr/include/mysql  -L/usr/lib/x86_64-linux-gnu
 
 #https://ubuntu.com/download/desktop/thank-you?version=18.04.4&architecture=amd64
 #http://releases.ubuntu.com/19.10/ubuntu-19.10-desktop-amd64.iso
+
+
+
+
+
+
+#install google test and google mock
+sudo apt-get install cmake # install cmake
+cd /usr/src/gtest
+sudo cmake CMakeLists.txt
+sudo make
+# copy or symlink libgtest.a and libgtest_main.a to your /usr/lib folder
+sudo cp *.a /usr/lib
+
+
+#NORMAL SOLUTION :
+gcc program.cpp -o election -lstdc++ -I./
+cd UT
+#Compile and run the tests:
+cmake CMakeLists.txt
+make
+./runTests
+
+
+
+
