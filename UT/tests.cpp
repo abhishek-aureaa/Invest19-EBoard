@@ -65,8 +65,9 @@ TEST(Election, ElectonOne) {
     //ASSERT_EQ(1,c.postAnIdea("Abhishek", "idea10"));
     //ASSERT_EQ(0,c.postAnIdea("Ritesh", "idea10"));
 
-    //ASSERT_EQ(1,c.postAnIdea((char*)"Abhishek", (char*)"idea10"));
-    //ASSERT_EQ(0,c.postAnIdea("(char*)Ritesh", (char*)"idea10"));
+    ASSERT_EQ(1,c.postAnIdea((char*)"Abhishek", (char*)"idea10"));
+    //ASSERT_EQ(1,c.postAnIdea((char*)"Vineet", (char*)"idea10"));
+    ASSERT_EQ(0,c.postAnIdea((char*)"Ritesh", (char*)"idea10"));
 
     printf("*********************************************************\n");
     printf("************************UNIT TESTING - ENDS *********************\n");
