@@ -14,6 +14,7 @@ sudo apt-get install mysql-server -y
 sudo apt-get install libmysqlclient-dev -y
 
 #compile code 
+cd Invest19-EBoard/database_based
 gcc createdb.c -o createdb  -I/usr/include/mysql -L/usr/lib/x86_64-linux-gnu -lmysqlclient
 gcc createuser.c -o createuser -I/usr/include/mysql -L/usr/lib/x86_64-linux-gnu -lmysqlclient
 gcc grantuser.c -o grantuser -I/usr/include/mysql -L/usr/lib/x86_64-linux-gnu -lmysqlclient
