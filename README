@@ -7,6 +7,7 @@
 #install C++ compiler 
 apt install gcc
 
+cd Invest19-EBoard
 #install google test and google mock
 sudo apt-get install cmake # install cmake
 cd /usr/src/gtest
