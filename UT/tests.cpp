@@ -37,6 +37,13 @@ TEST(Election, ElectonOne) {
     ASSERT_EQ(1, c.listRatings());
 
 
+    ASSERT_EQ(0, c.listFollowersForContender((char*)"Abhishek"));
+    ASSERT_EQ(1, c.addFollower((char*)"Abhishek", (char*)"Aditya"));
+    ASSERT_EQ(1, c.listFollowersForContender((char*)"Abhishek"));
+    ASSERT_EQ(1, c.addFollower((char*)"Abhishek", (char*)"Manish"));
+    ASSERT_EQ(1, c.listFollowersForContender((char*)"Abhishek"));
+
+
     ASSERT_EQ(1, c.listRatings());
     ASSERT_EQ(1, c.deleteRating((char*)"idea7", (char*)"Vijay", (char*)"Mahesh"));
     ASSERT_EQ(1, c.listRatings());
@@ -46,6 +53,20 @@ TEST(Election, ElectonOne) {
     ASSERT_EQ(1, c.listRatings());
     ASSERT_EQ(1, c.deleteRating((char*)"idea1", (char*)"Abhishek", (char*)"Aditya"));
     ASSERT_EQ(0, c.listRatings());
+
+    ASSERT_EQ(1,c.rateIdea((char*)"idea1", (char*)"Abhishek", (char*)"Aditya", 6));
+    ASSERT_EQ(1,c.rateIdea((char*)"idea2", (char*)"Abhishek", (char*)"Manish", 6));
+    ASSERT_EQ(1,c.rateIdea((char*)"idea4", (char*)"Ravi", (char*)"Suresh", 6));
+    ASSERT_EQ(1,c.rateIdea((char*)"idea7", (char*)"Vijay", (char*)"Mahesh", 6));
+
+    ASSERT_EQ(1, c.addFollower((char*)"Aditya", (char*)"Ramesh"));
+    ASSERT_EQ(1, c.MailToContender("Abhishek"));
+
+    //ASSERT_EQ(1,c.postAnIdea("Abhishek", "idea10"));
+    //ASSERT_EQ(0,c.postAnIdea("Ritesh", "idea10"));
+
+    //ASSERT_EQ(1,c.postAnIdea((char*)"Abhishek", (char*)"idea10"));
+    //ASSERT_EQ(0,c.postAnIdea("(char*)Ritesh", (char*)"idea10"));
 
     printf("*********************************************************\n");
     printf("************************UNIT TESTING - ENDS *********************\n");

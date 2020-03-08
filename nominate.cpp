@@ -79,16 +79,102 @@ public:
 		{
 			headManifesto = temp;
 			headManifesto->next = NULL;
+			//Point num 7 : Anytime a contender posts an idea, an email should be sent out
+			MailToContender(temp->contender);
                         return 1;
 		}
 		else
 		{
 			temp->next = headManifesto;
 			headManifesto = temp;
+			//Point num 7 : Anytime a contender posts an idea, an email should be sent out
+			MailToContender(temp->contender);
                         return 1;
 		}
                 return 0;
 	}
+
+
+/*
+	//int postAnIdea(const char* contender, const char* idea)
+	int postAnIdea(char* contender, char* idea)
+	{
+                if (headManifesto == NULL)
+                {
+                        printf("No Manifesto for contender : %s, hence can not post an idea\n", contender);
+                        return 0;
+                }
+
+                struct manifesto* temp = headManifesto;
+                while (temp->next != NULL)
+                {
+			/*if any of the 3 ideas are blank, post the idea there 
+			if(!strcmp(temp->contender, contender))
+			{
+				if(!strcmp(temp->idea1, ""))
+				{
+					temp->idea1 = idea;
+				}
+				else
+				if(!strcmp(temp->idea2, ""))
+				{
+					temp->idea2 = idea;
+				}
+				else
+				if(!strcmp(temp->idea3, ""))
+				{
+					temp->idea3 = idea;
+				}
+				//if none of the ideas are blank, clean idea1 and post the new idea there
+				else
+				{
+					//Will avoid memory leak;
+					free(temp->idea1);
+					temp->idea1 = idea;
+				}
+				//Send email to followers and their followers further 
+				MailToContender(temp->contender);
+			}
+                        if (temp->next != NULL)
+                                temp = temp->next;
+		 }
+
+                       if(!strcmp(temp->contender, contender))
+                        {
+				if(!strcmp(temp->idea1, ""))
+				{
+					temp->idea1 = idea;
+				}
+				else
+				if(!strcmp(temp->idea2, ""))
+				{
+					temp->idea2 = idea;
+				}
+				else
+				if(!strcmp(temp->idea3, ""))
+				{
+					temp->idea3 = idea;
+				}
+				//if none of the ideas are blank, clean idea1 and post the new idea there
+				else
+				{
+					//Will avoid memory leak;
+					free(temp->idea1);
+					temp->idea1 = idea;
+				}
+				//Send email to followers and their followers further 
+				MailToContender(temp->contender);
+                       }
+		       else
+			{
+                        	printf("No Manifesto for contender : %s, hence can not post an idea\n", contender);
+	                        return 0;
+			}
+		return 1;
+
+	}
+*/
+
  
 	int rateIdea(char* idea, char* contender, char* citizen, int rating)
 	{
@@ -97,6 +183,10 @@ public:
 		temp->contender = (char*)contender;
 		temp->citizen = (char*)citizen;
 		temp->rating = rating;
+
+		//citizen added as follower 
+		if(rating == 5)
+			addFollower(contender, citizen);
 
 		if (headIdea == NULL)
 		{
@@ -187,6 +277,7 @@ public:
 			{
 				printf(temp->follower);
 				printf("\n");
+
 				num_follower++;
 			}	
 			if (temp->next != NULL)
@@ -196,6 +287,7 @@ public:
 		{
 			printf(temp->follower);
 			printf("\n");
+
 			num_follower++;
 		}	
 
@@ -204,6 +296,55 @@ public:
 		
 		return 1;
 	}
+
+	//Point num 7 : Anytime a contender posts an idea, an email should be sent out
+        int MailToContender(char* contender)
+        {
+                int num_follower = 0;
+                if (headContender == NULL)
+                {
+                        printf("No follower for contender, So No email\n");
+                        return 0;
+                }
+                struct follower* temp = headContender;
+		printf("   \n");
+		printf("   \n");
+                printf("****************************************************\n");
+                while (temp->next != NULL)
+                {
+                        if(!strcmp(temp->contender, contender))
+                        {
+                		printf("Follower for Contender '%s' , is : ", contender);
+                                printf(temp->follower);
+
+                                printf(" , Email will be sent to him");
+                                printf("\n");
+                                MailToContender(temp->follower);
+
+                                num_follower++;
+                        }
+                        if (temp->next != NULL)
+                                temp = temp->next;
+                }
+                if(!strcmp(temp->contender, contender))
+                {
+                	printf("Follower for Contender '%s' , is : ", contender);
+                        printf(temp->follower);
+
+                        printf(" , Email will be sent to him");
+                        printf("\n");
+                        MailToContender(temp->follower);
+
+                        num_follower++;
+                }
+
+                if(num_follower == 0)
+                        return 0;
+
+                return 1;
+        }
+
+
 
 	int listRatings()
 	{
