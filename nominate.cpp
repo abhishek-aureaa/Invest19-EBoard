@@ -114,6 +114,18 @@ public:
 				/*remove contender here - remove its entries from all tables*/
 				{
 					numVoter = 0;
+					/* Remove  records for contender from all these lists
+				       //struct Node* head;
+				       struct Node* temp1 = head;
+                		       while (temp1->next != NULL)
+				       {
+                        			if (!strcmp(temp1->value, contender))
+				       }
+                		       while (tempt != NULL)
+			               struct manifesto* headManifesto;
+  				       struct idea* headIdea;
+				       struct follower* headContender;
+					*/
 				}
                         }
                         if (tempOne->next != NULL)
@@ -123,9 +135,15 @@ public:
                 {
 			if((tempOne->rating < 5)
 	 		&&(numVoter >= 3))
-			/*remove contender here - remove its entries from all tables*/
+		        /*remove contender here - remove its entries from all tables*/
 			{
 				numVoter = 0;
+				/* Remove  records for contender from all these lists
+			       struct Node* head;
+		               struct manifesto* headManifesto;
+  			       struct idea* headIdea;
+			       struct follower* headContender;
+				*/
 			}
                 }
 	    }
@@ -164,7 +182,7 @@ public:
 			return 0;
 
 		struct idea* temp1 = NULL;
-		//if ((!strcmp(headIdea->idea, idea)) && (!strcmp(headIdea->contender, contender)) && (!strcmp(headIdea->citizen, citizen)))
+		if ((!strcmp(headIdea->idea, idea)) && (!strcmp(headIdea->contender, contender)) && (!strcmp(headIdea->citizen, citizen)))
 		{
 			temp1 = headIdea;
 			headIdea = headIdea->next;
@@ -179,7 +197,7 @@ public:
 			temp1 = headIdea->next;
 		while (temp1 != NULL)
 		{
-			//if ((!strcmp(temp1->idea, idea)) && (!strcmp(temp1->contender, contender)) && (!strcmp(temp1->citizen, citizen)))
+			if ((!strcmp(temp1->idea, idea)) && (!strcmp(temp1->contender, contender)) && (!strcmp(temp1->citizen, citizen)))
 			{
 				prev->next = temp1->next;
 
