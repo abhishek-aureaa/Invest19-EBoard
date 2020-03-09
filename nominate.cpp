@@ -98,6 +98,41 @@ public:
 
 	int rateIdea(char* idea, char* contender, char* citizen, int rating)
 	{
+
+            /*remove contender here - remove its entries from all tables*/
+	    int numVoter = 0;
+	    if(rating < 5)
+	    {
+		/*Implement here this -  A contender is removed from the election if he/she has at least 1 idea which is rated less than 5 by more than 3 voters.*/
+		struct idea* tempOne = (struct idea*) malloc(sizeof(struct idea));
+                while (tempOne->next != NULL)
+                {
+                        if (!strcmp(tempOne->contender, contender))
+                        {
+				if((tempOne->rating < 5)
+			           &&(numVoter >= 3))
+				/*remove contender here - remove its entries from all tables*/
+				{
+					numVoter = 0;
+				}
+                        }
+                        if (tempOne->next != NULL)
+                                tempOne = tempOne->next;
+                }
+                if (!strcmp(tempOne->contender, contender))
+                {
+			if((tempOne->rating < 5)
+	 		&&(numVoter >= 3))
+			/*remove contender here - remove its entries from all tables*/
+			{
+				numVoter = 0;
+			}
+                }
+	    }
+
+		
+
+
 		struct idea* temp = (struct idea*) malloc(sizeof(struct idea));
 		temp->idea = (char*)idea;
 		temp->contender = (char*)contender;
